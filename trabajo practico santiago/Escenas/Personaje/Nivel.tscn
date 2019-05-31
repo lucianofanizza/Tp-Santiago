@@ -1,0 +1,198 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Escenas/Personaje/Collision.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Imagenes/Nivel.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Imagenes/escalera.png" type="Texture" id=3]
+[ext_resource path="res://Escenas/Piso/Piso 1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Escenas/Piso/Piso 2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Escenas/Piso/Piso 3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Escenas/Personaje/Barril.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Escenas/Personaje/Personaje.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Escenas/Personaje/Enemigo.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Escenas/Personaje/Escalera.gd" type="Script" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 126.981, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 534.897, 28.1708 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 399.311, 9.97914 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "movimiento"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 961.828, 215.418 ), Vector2( -107.088, 205.397 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "movimiento"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1151.55, 215.418 ), Vector2( -107.088, 205.397 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "movimiento"
+length = 5.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1226.47, 215.418 ), Vector2( -107.088, 205.397 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 944.185, 537.303 ), Vector2( 337.909, 543.984 ), Vector2( 970.908, 538.973 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 51.3378, 8.47275 )
+
+[node name="Nivel" type="Node"]
+
+[node name="Collision 1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1070.18, 271.725 )
+
+[node name="Collision 2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -41.6527, 262.934 )
+
+[node name="Fondo" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 512.971, 300.973 )
+scale = Vector2( 12.097, 12.1223 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Fondo"]
+position = Vector2( -25.2947, 11.1288 )
+scale = Vector2( 0.393231, 0.662836 )
+texture = ExtResource( 3 )
+
+[node name="Piso 1" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 44.5432, 255.219 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Piso 1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso 1/StaticBody2D"]
+position = Vector2( 0.698334, -0.698334 )
+shape = SubResource( 1 )
+
+[node name="Piso 0" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 239.229, 594.765 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Piso 0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso 0/StaticBody2D"]
+position = Vector2( 274.671, -0.155823 )
+shape = SubResource( 2 )
+
+[node name="Piso 2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 701.65, 352.395 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Piso 2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso 2/StaticBody2D"]
+position = Vector2( -62.8292, -96.0683 )
+shape = SubResource( 3 )
+
+[node name="Personajes" type="Node" parent="."]
+
+[node name="Barril" parent="Personajes" instance=ExtResource( 7 )]
+editor/display_folded = true
+position = Vector2( 940.584, 205.934 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Personajes/Barril"]
+autoplay = "movimiento"
+anims/movimiento = SubResource( 4 )
+
+[node name="Barril2" parent="Personajes" instance=ExtResource( 7 )]
+editor/display_folded = true
+position = Vector2( 1072.99, 214.793 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Personajes/Barril2"]
+autoplay = "movimiento"
+anims/movimiento = SubResource( 5 )
+
+[node name="Barril3" parent="Personajes" instance=ExtResource( 7 )]
+editor/display_folded = true
+position = Vector2( 1226.47, 210.284 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Personajes/Barril3"]
+autoplay = "movimiento"
+anims/movimiento = SubResource( 6 )
+
+[node name="Personaje" parent="Personajes" instance=ExtResource( 8 )]
+position = Vector2( 29.2978, 216.521 )
+
+[node name="Enemigo" parent="Personajes" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 468.861, 542.541 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Personajes/Enemigo"]
+autoplay = "movimiento"
+anims/movimiento = SubResource( 7 )
+
+[node name="Escalera" type="KinematicBody2D" parent="."]
+position = Vector2( 191.282, 251.932 )
+script = ExtResource( 10 )
+
+[node name="aaa" type="CollisionShape2D" parent="Escalera"]
+position = Vector2( 15.1203, 27.1194 )
+rotation = 3.14159
+z_as_relative = false
+shape = SubResource( 8 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 9.33081
+margin_top = 5.83174
+margin_right = 278.331
+margin_bottom = 131.832
+text = "Izquierda: A
+Derecha: D
+Saltar: K
+Subir (escalera): W
+bajar (escalera): S"
+
